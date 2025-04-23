@@ -1,11 +1,13 @@
 const express = require('express');
 const multer = require('multer');
+const cors = require('cors'); // <--- AGREGAR ESTA LÍNEA
 const axios = require('axios');
 const fs = require('fs');
 const FormData = require('form-data');
 require('dotenv').config();
 
 const app = express();
+app.use(cors()); // <--- AGREGAR ESTA LÍNEA TAMBIÉN
 const upload = multer({ dest: 'uploads/' });
 
 app.post('/whisper', upload.single('audio'), async (req, res) => {
